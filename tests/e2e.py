@@ -102,8 +102,8 @@ def test_chat(sized_page: Page, live_server_url: str):
 
     # Check initial page state
     page.goto(live_server_url)
-    expect(page).to_have_title("Azure OpenAI + AI Search")
-    expect(page.get_by_role("heading", name="Chat with your data")).to_be_visible()
+    expect(page).to_have_title("Azure OpenAI + SBI")
+    expect(page.get_by_role("heading", name="Data Vault Copilot")).to_be_visible()
     expect(page.get_by_role("button", name="Clear chat")).to_be_disabled()
     expect(page.get_by_role("button", name="Developer settings")).to_be_enabled()
 
