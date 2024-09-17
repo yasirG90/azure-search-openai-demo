@@ -149,7 +149,7 @@ param bypass string = 'AzureServices'
 
 @description('Public network access value for all deployed resources')
 @allowed([ 'Enabled', 'Disabled' ])
-param publicNetworkAccess string = 'Enabled'
+param publicNetworkAccess string = 'Disabled'
 
 @description('Add a private endpoints for network connectivity')
 param usePrivateEndpoint bool = false
@@ -180,7 +180,22 @@ param useLocalHtmlParser bool = false
 
 var abbrs = loadJsonContent('abbreviations.json')
 var resourceToken = toLower(uniqueString(subscription().id, environmentName, location))
-var tags = { 'azd-env-name': environmentName }
+//var tags = { 'azd-env-name': environmentName }
+
+param tags object = {
+
+   accountName: 'test'
+   applicationName:'test'
+   businessCluster:'test'
+   businessEntity:'test'
+   businessEntityOwner:'test'
+   costCenter:'test'
+   costCenterOwner:'test'
+   environment:'test'
+   techOwner:'test'
+   }
+
+
 
 var tenantIdForAuth = !empty(authTenantId) ? authTenantId : tenantId
 var authenticationIssuerUri = '${environment().authentication.loginEndpoint}${tenantIdForAuth}/v2.0'
