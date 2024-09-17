@@ -18,7 +18,7 @@ class RetrieveThenReadApproach(Approach):
     """
 
     system_chat_template = (
-        "You are an intelligent assistant helping Contoso Inc employees with their healthcare plan questions and employee handbook questions. "
+        "You are an intelligent assistant helping Sanlam employees with their Data Vault designs and providing them information around the data vault methodology. "
         + "Use 'you' to refer to the individual asking the questions even if they ask with 'I'. "
         + "Answer the following question using only the data provided in the sources below. "
         + "Each source has a name followed by colon and the actual information, always include the source name for each fact you use in the response. "
@@ -27,15 +27,32 @@ class RetrieveThenReadApproach(Approach):
 
     # shots/sample conversation
     question = """
-'What is the deductible for the employee plan for a visit to Overlake in Bellevue?'
+'What hubs and links are relevant for managing insurance policies?'
 
 Sources:
-info1.txt: deductibles depend on whether you are in-network or out-of-network. In-network deductibles are $500 for employee and $1000 for family. Out-of-network deductibles are $1000 for employee and $2000 for family.
-info2.pdf: Overlake is in-network for the employee plan.
-info3.pdf: Overlake is the name of the area that includes a park and ride near Bellevue.
-info4.pdf: In-network institutions include Overlake, Swedish and others in the region
+info1.txt: h_0001_party : An individual or organization participating in an insurance contract.h_0004_fs_agreement : A formal contract outlining the terms of financial services 
+provided.h_0011_fsa_coverage_benefit : The extent of protection and benefits provided by a 
+financial service agreement. h_0027_claim : A request for payment under the terms of an insurance policy.
+info2.pdf: l_5062_fsa_cb_claim: Represents the relationship between the financial service agreement (policy), coverage benefit, and claims​.
+           l_5074_fsa_claim: Links the financial service agreement to claims​.
+           l_5060_fsa_claim_party_role: Connects the financial service agreement, claim, party, and role in the context of claims​.
+           l_5009_fsa_party_role: Captures the relationship between parties and their roles within a financial service agreement​​.
+info3.pdf: Data Vault modeling is based on three main components.Hubs, Represent core business concepts.Links, Represent relationships between Hubs. Satellites, Store descriptive attributes for Hubs and Links
+info4.pdf: For a Customer entity, a good Business Key might be a Customer ID that remains constant across all systems, rather than using a system-generated primary key that could change.
+
 """
-    answer = "In-network deductibles are $500 for employee and $1000 for family [info1.txt] and Overlake is in-network for the employee plan [info2.pdf][info4.pdf]."
+    answer = """Hubs:
+                h_0001_party: Represents an individual or organization participating in an insurance contract​.
+                h_0004_fs_agreement: Represents the formal contract outlining the terms of financial services provided, such as an insurance policy​. 
+                h_0011_fsa_coverage_benefit: Represents the extent of protection and benefits provided by a financial service agreement (the policy coverage details)​ . 
+                h_0027_claim: Represents a request for payment under the terms of an insurance policy​.[info1.txt] 
+                
+                Links:
+                l_5062_fsa_cb_claim: Represents the relationship between the financial service agreement (policy), coverage benefit, and claims​.
+                l_5074_fsa_claim: Links the financial service agreement to claims​.
+                l_5060_fsa_claim_party_role: Connects the financial service agreement, claim, party, and role in the context of claims​.
+                l_5009_fsa_party_role: Captures the relationship between parties and their roles within a financial service agreement​​.[info2.pdf][info3.pdf]
+"""
 
     def __init__(
         self,

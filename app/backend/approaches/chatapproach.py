@@ -10,10 +10,10 @@ from approaches.approach import Approach
 
 class ChatApproach(Approach, ABC):
     query_prompt_few_shots: list[ChatCompletionMessageParam] = [
-        {"role": "user", "content": "How did crypto do last year?"},
-        {"role": "assistant", "content": "Summarize Cryptocurrency Market Dynamics from last year"},
-        {"role": "user", "content": "What are my health plans?"},
-        {"role": "assistant", "content": "Show available health plans"},
+        {"role": "user", "content": "Design me a Raw Vault for a specific case using the hub and link registry"},
+        {"role": "assistant", "content": "Follow the Data Vault Design Document and Hub and Link Registry to give me a Raw Vault Design"},
+        {"role": "user", "content": "Find the relevant information I need from the Mapping File"},
+        {"role": "assistant", "content": "Give me my answers as are shown in the Use Case Example output document"},
     ]
     NO_RESPONSE = "0"
 
@@ -30,8 +30,6 @@ class ChatApproach(Approach, ABC):
     You have access to Azure AI Search index with 100's of documents.
     Generate a search query based on the conversation and the new question.
     Do not include cited source filenames and document names e.g info.txt or doc.pdf in the search query terms.
-    Do not include any text inside [] or <<>> in the search query terms.
-    Do not include any special characters like '+'.
     If the question is not in English, translate the question to English before generating the search query.
     If you cannot generate a search query, return just the number 0.
     """
