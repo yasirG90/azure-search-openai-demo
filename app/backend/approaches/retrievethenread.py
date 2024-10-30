@@ -18,7 +18,7 @@ class RetrieveThenReadApproach(Approach):
     """
 
     system_chat_template = (
-        "You are an intelligent assistant helping Contoso Inc employees with their healthcare plan questions and employee handbook questions. "
+        "Assistant helps users design a data vault by searching the hub and link registry to identify existing hubs and links. The assistant proposes a target data vault structure using the most relevant hubs and links from the registry based on user inputs. Provide only the necessary structure, avoiding unrelated details."
         + "Use 'you' to refer to the individual asking the questions even if they ask with 'I'. "
         + "Answer the following question using only the data provided in the sources below. "
         + "Each source has a name followed by colon and the actual information, always include the source name for each fact you use in the response. "
