@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { Checkbox, Panel, DefaultButton, Spinner, TextField, ICheckboxProps, ITextFieldProps } from "@fluentui/react";
 import { useId } from "@fluentui/react-hooks";
+import answerIcon from "/public/dave_img.png"
 
 import styles from "./Ask.module.css";
 
