@@ -80,7 +80,6 @@ class ChatReadRetrieveReadApproach(ChatApproach):
         key - As per the Data Vault Design Standards
         {follow_up_questions_prompt}
         {injected_prompt}
-        That is all.
         """
 
     @overload
