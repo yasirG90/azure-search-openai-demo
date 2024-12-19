@@ -467,7 +467,7 @@ var defaultOpenAiDeployments = [
       version: chatGpt.deploymentVersion
     }
     sku: {
-      name: 'Standard'
+      name: 'GlobalStandard'
       capacity: chatGpt.deploymentCapacity
     }
   }
